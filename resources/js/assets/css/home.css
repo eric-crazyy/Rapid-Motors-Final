@@ -1,0 +1,1290 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --gold:     #c9a961;
+  --gold-lt:  #e8c97a;
+  --gold-dk:  #9e7d3f;
+  --black:    #080808;
+  --dark:     #0d0d0d;
+  --dark-2:   #111111;
+  --dark-3:   #181818;
+  --white:    #f5f0e8;
+  --white-70: rgba(245,240,232,0.7);
+  --white-50: rgba(245,240,232,0.5);
+  --white-20: rgba(245,240,232,0.2);
+  --white-08: rgba(245,240,232,0.08);
+  --ease:     cubic-bezier(0.4, 0, 0.2, 1);
+  --spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --navbar-h: 80px;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: var(--navbar-h);
+  padding-bottom: 7rem;
+  box-sizing: border-box;
+}
+
+.hero-background {
+  position: absolute;
+  top: -10%; left: 0; right: 0; bottom: -10%;
+  will-change: transform;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) saturate(0.85);
+}
+
+.hero-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(8,8,8,0.25) 0%, transparent 35%, transparent 60%, rgba(8,8,8,0.95) 100%),
+    radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(8,8,8,0.55) 100%);
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+.orb-1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,169,97,0.07) 0%, transparent 70%);
+  top: -15%; left: -20%;
+  animation: orb-drift 14s ease-in-out infinite alternate;
+}
+
+.orb-2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,169,97,0.05) 0%, transparent 70%);
+  bottom: 0; right: -10%;
+  animation: orb-drift 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orb-drift {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(50px, 40px) scale(1.12); }
+}
+
+.hero-corner-tl,
+.hero-corner-br {
+  position: absolute;
+  width: 100px; height: 100px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.hero-corner-tl {
+  top: 5rem; left: 4rem;
+  border-top: 1px solid rgba(201,169,97,0.35);
+  border-left: 1px solid rgba(201,169,97,0.35);
+}
+
+.hero-corner-br {
+  bottom: 5rem; right: 4rem;
+  border-bottom: 1px solid rgba(201,169,97,0.35);
+  border-right: 1px solid rgba(201,169,97,0.35);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 1000px;
+  padding: 0 2rem;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero.loaded .hero-eyebrow {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s;
+}
+
+.eyebrow-line {
+  display: block;
+  width: 55px; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.eyebrow-line.right {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.eyebrow-text {
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1em;
+}
+
+.hero-title-word {
+  display: inline-block;
+  font-size: clamp(4.5rem, 11vw, 9.5rem);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i) * 0.08s);
+}
+
+.hero-title-word.italic {
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 8.5vw, 7.5rem);
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+
+.hero.loaded .hero-title-word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white-70);
+  letter-spacing: 0.06em;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subtitle-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(0.2s + var(--d, 0ms));
+}
+
+.hero.loaded .subtitle-char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  padding: 1.2rem 3rem;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dk) 100%);
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  border-radius: 2px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero.loaded .hero-cta {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.4s;
+}
+
+.hero-cta.ready {
+  transition-delay: 0s !important;
+  transition: transform 0.1s ease-in, box-shadow 0.1s ease-in, opacity 0.2s ease;
+}
+
+.hero-cta.ready:hover {
+  transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(201, 169, 97, 0.45);
+}
+
+.hero-cta:active {
+  transform: translateY(-1px);
+  transition: transform 0.05s linear;
+}
+
+.cta-text,
+.cta-arrow {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.1s ease-in;
+}
+
+.hero-cta:hover .cta-arrow {
+  transition: transform 0.1s ease-out;
+  transform: translateX(6px);
+}
+
+.cta-shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.4) 50%, transparent 80%);
+  transform: translateX(-110%);
+  pointer-events: none;
+  opacity: 1;
+}
+
+.hero-cta:hover .cta-shimmer,
+.view-details:hover .cta-shimmer {
+  animation: shimmer-sweep 0.35s ease-out forwards;
+}
+
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-110%); }
+  100% { transform: translateX(200%); }
+}
+
+.scroll-indicator {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translate(-50%, 20px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero.loaded .scroll-indicator {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  transition-delay: 0.2s;
+}
+
+.scroll-line {
+  width: 1px; height: 55px;
+  background: rgba(201,169,97,0.15);
+  overflow: hidden;
+}
+
+.scroll-dot {
+  width: 1px; height: 25px;
+  background: var(--gold);
+  animation: scroll-fall 1.2s ease-in-out infinite;
+}
+
+@keyframes scroll-fall {
+  0%   { transform: translateY(-25px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translateY(55px); opacity: 0; }
+}
+
+.scroll-label {
+  color: rgba(201,169,97,0.45);
+  font-size: 0.58rem;
+  letter-spacing: 0.45em;
+  font-weight: 600;
+}
+
+.marquee-strip {
+  overflow: hidden;
+  background: var(--dark-2);
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(201,169,97,0.12);
+  border-bottom: 1px solid rgba(201,169,97,0.12);
+}
+
+.marquee-track {
+  display: flex;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-item {
+  color: rgba(201,169,97,0.4);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 0 3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.marquee-dot {
+  color: var(--gold);
+  font-size: 0.45rem;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.section-label {
+  display: block;
+  color: var(--gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+}
+
+.title-underline {
+  width: 70px; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 1.5rem auto 0;
+}
+
+.featured {
+  padding: 8rem 4rem;
+  background: var(--black);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.car-card {
+  background: var(--dark-2);
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.05);
+  position: relative;
+  isolation: isolate;
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.3),
+    0 0 0 1px rgba(255,255,255,0.02);
+  will-change: transform, box-shadow, border-color;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.car-card::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(201,169,97,0.2) 0%,
+    rgba(201,169,97,0.12) 25%,
+    rgba(201,169,97,0.06) 50%,
+    transparent 70%
+  );
+  border-radius: 3px;
+  opacity: 0;
+  transform: scale(0.95);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(25px);
+  will-change: opacity, transform;
+}
+
+.car-card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.car-card:hover {
+  transform: translateY(-14px) translateZ(20px);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(201,169,97,0.4),
+    0 0 40px rgba(201,169,97,0.25),
+    0 0 80px rgba(201,169,97,0.15),
+    0 5px 30px rgba(201,169,97,0.2);
+  border-color: rgba(201,169,97,0.4);
+}
+
+.car-card-image-wrapper {
+  position: relative;
+  padding-top: 62%;
+  overflow: hidden;
+  border-radius: 3px 3px 0 0;
+}
+
+.car-card-image {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: brightness(0.88) saturate(0.85);
+  will-change: transform, filter;
+}
+
+.car-card:hover .car-card-image {
+  transform: scale(1.07);
+  filter: brightness(0.7) saturate(1);
+}
+
+.car-card-img-fallback {
+  position: absolute;
+  inset: 0;
+  background: #0f0f0f;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.img-fallback-icon {
+  font-size: 2rem;
+  opacity: 0.2;
+  line-height: 1;
+}
+
+.img-fallback-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.22);
+  text-transform: uppercase;
+}
+
+.car-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8, 8, 8, 0.88) 0%,
+    rgba(8, 8, 8, 0.4)  40%,
+    rgba(8, 8, 8, 0.05) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.car-card:hover .car-card-overlay {
+  opacity: 1;
+}
+
+.view-details {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.8rem;
+  border: 1px solid rgba(201,169,97,0.55);
+  border-radius: 1px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition:
+    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.1s ease-in;
+  background: rgba(8,8,8,0.3);
+  backdrop-filter: blur(4px);
+}
+
+.car-card:hover .view-details {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.view-details:hover {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4);
+  transition:
+    opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.05s,
+    transform 0.1s ease-out,
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.1s ease-out;
+}
+
+.view-details .cta-text {
+  position: relative;
+  z-index: 1;
+  transition: text-shadow 0.1s ease-in;
+}
+
+.view-details:hover .cta-text {
+  text-shadow: 0 2px 14px rgba(201, 169, 97, 0.55);
+  transition: text-shadow 0.1s ease-out;
+}
+
+.car-card-content {
+  padding: 1.8rem 2rem 2rem;
+  border-radius: 0 0 3px 3px;
+  overflow: hidden;
+}
+
+.car-card-category {
+  color: var(--gold);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.car-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+.car-card-specs {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  color: var(--white-50);
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.spec-dot {
+  color: rgba(201,169,97,0.35);
+  font-size: 0.45rem;
+}
+
+.car-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.car-card-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+}
+
+.card-arrow-icon {
+  color: rgba(201,169,97,0.35);
+  font-size: 1.05rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  background: rgba(201,169,97,0.05);
+  will-change: transform, color, background, box-shadow;
+}
+
+.card-arrow-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,169,97,0.2) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-arrow-icon:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.card-arrow-icon:hover {
+  transform: translateX(1px) scale(1.1);
+  color: var(--gold);
+  background: rgba(201,169,97,0.15);
+  box-shadow: 0 0 20px rgba(201,169,97,0.3);
+}
+
+.car-card:hover .card-arrow-icon {
+  color: var(--gold);
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: var(--black);
+}
+
+.category-card {
+  position: relative;
+  height: 65vh;
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem;
+}
+
+.category-card:nth-child(3) {
+  grid-column: 1 / -1;
+  height: 75vh;
+  min-height: 600px;
+}
+
+.category-bg-zoom {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s var(--ease), filter 0.4s var(--ease);
+  filter: brightness(0.65) saturate(0.8);
+  will-change: transform;
+}
+
+.oldtimer-card  .category-bg-zoom { background-image: url('images/dodgeBackground.jpg'); }
+.supercar-card  .category-bg-zoom { background-image: url('images/supercarsBackground.jpg'); }
+.services-card  .category-bg-zoom { background-image: url('images/mercedesBackground.jpg'); }
+.luxurycar-card .category-bg-zoom { background-image: url('images/rollsroyceBackground.jpg'); }
+.allcar-card    .category-bg-zoom { background-image: url('images/dubaisuperCarsBackground.jpg'); }
+
+.category-card:hover .category-bg-zoom {
+  transform: scale(1.05);
+  filter: brightness(0.9) saturate(1.1);
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8,8,8,0.95) 0%,
+    rgba(8,8,8,0.7) 25%,
+    transparent 60%
+  );
+  background-size: 150% 100%;
+  background-position: 0% 0%;
+  z-index: 1;
+  transition: background-position 0.6s var(--ease), opacity 0.4s var(--ease);
+}
+
+.category-card:hover::before {
+  background-position: 20% 0%;
+  opacity: 0.85;
+}
+
+.category-content {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s var(--ease);
+}
+
+.category-card:hover .category-content {
+  transform: translateY(-8px);
+}
+
+.category-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 5rem;
+  font-weight: 900;
+  color: rgba(201,169,97,0.15);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 5px rgba(201,169,97,0.05);
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease), text-shadow 0.3s var(--ease);
+}
+
+.category-card:hover .category-number {
+  color: rgba(201,169,97,0.15);
+  transform: translateX(5px);
+}
+
+.category-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 1rem;
+  transition: color 0.2s var(--ease), transform 0.3s var(--ease);
+}
+
+.category-card:hover .category-title {
+  transform: translateX(5px);
+}
+
+.category-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 480px;
+  transition: color 0.2s var(--ease), transform 0.3s var(--ease);
+}
+
+.category-card:hover .category-description {
+  color: rgba(245,240,232,0.95);
+  transform: translateX(5px);
+}
+
+.category-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.65rem 1.5rem 0.65rem 0;
+  border-bottom: 2px solid rgba(201,169,97,0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.1s ease-in;
+}
+
+.category-link::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.3s var(--ease);
+}
+
+.category-card:hover .category-link::before {
+  width: 100%;
+}
+
+.category-card:hover .category-link {
+  color: var(--gold-lt);
+  gap: 1.3rem;
+  padding-left: 5px;
+}
+
+.category-link:hover {
+  transform: translateY(-2px);
+  transition: transform 0.1s ease-out;
+}
+
+.category-link .cta-text {
+  position: relative;
+  z-index: 1;
+  transition: text-shadow 0.1s ease-in;
+}
+
+.category-link:hover .cta-text {
+  text-shadow: 0 2px 14px rgba(201, 169, 97, 0.55);
+  transition: text-shadow 0.1s ease-out;
+}
+
+.cat-arrow {
+  display: inline-block;
+  transition: transform 0.1s ease-in;
+}
+
+.category-link .cat-arrow {
+  position: relative;
+  z-index: 1;
+}
+
+.category-card:hover .cat-arrow {
+  transform: translateX(8px) scale(1.2);
+}
+
+.category-link:hover .cat-arrow {
+  transform: translateX(5px);
+  transition: transform 0.1s ease-out;
+}
+
+.about {
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("images/dubai-desert-supercars.jpg") center / cover no-repeat;
+  filter: brightness(0.1) saturate(0.7);
+  z-index: 0;
+}
+
+.about-overlay-left {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8,8,8,0.96) 0%,
+    rgba(8,8,8,0.75) 45%,
+    rgba(8,8,8,0.25) 100%
+  );
+  z-index: 1;
+}
+
+.about-overlay-bottom {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(8,8,8,0.7) 0%, transparent 15%, transparent 85%, rgba(8,8,8,0.7) 100%);
+  z-index: 1;
+}
+
+.about-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.about-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.about-heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+
+.about-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white-70);
+  line-height: 1.9;
+  margin-top: 1.8rem;
+}
+
+.about-rule {
+  width: 60px; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin-top: 2.5rem;
+}
+
+.about-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.stat {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--white-08);
+  position: relative;
+}
+
+.stat:first-child {
+  border-top: 1px solid var(--white-08);
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.stat-plus {
+  font-size: 1.6rem;
+  color: var(--gold-lt);
+  vertical-align: top;
+  margin-top: 0.4rem;
+  display: inline-block;
+}
+
+.stat-label {
+  color: var(--white-50);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.contact {
+  padding: 10rem 4rem;
+  background: var(--black);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-bg-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,169,97,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,169,97,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+}
+
+.contact-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-text {
+  color: var(--white-50);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 300;
+  margin: 1.5rem 0 4rem;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-item {
+  padding: 2.5rem 1.5rem;
+  background: var(--dark-3);
+  border: 1px solid var(--white-08);
+  border-radius: 3px;
+  transition: all 0.2s var(--ease);
+  cursor: default;
+}
+
+.contact-item:hover {
+  border-color: rgba(201,169,97,0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.contact-icon  { font-size: 1.7rem; margin-bottom: 1rem; }
+.contact-label { color: var(--gold); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+.contact-value { color: var(--white-50); font-size: 0.88rem; }
+
+[data-reveal] .section-label,
+[data-reveal] .section-title,
+[data-reveal] .title-underline,
+[data-reveal] .car-card,
+[data-reveal] .category-card,
+[data-reveal] .about-heading,
+[data-reveal] .about-description,
+[data-reveal] .about-rule,
+[data-reveal] .stat,
+[data-reveal] .contact-text,
+[data-reveal] .contact-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].revealed .section-label,
+[data-reveal].revealed .section-title,
+[data-reveal].revealed .title-underline,
+[data-reveal].revealed .car-card,
+[data-reveal].revealed .category-card,
+[data-reveal].revealed .about-heading,
+[data-reveal].revealed .about-description,
+[data-reveal].revealed .about-rule,
+[data-reveal].revealed .stat,
+[data-reveal].revealed .contact-text,
+[data-reveal].revealed .contact-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal].revealed .section-title   { transition-delay: 0.05s; }
+[data-reveal].revealed .title-underline { transition-delay: 0.1s; }
+[data-reveal].revealed .car-card        { transition-delay: var(--card-delay, 0ms); }
+
+.categories.revealed .oldtimer-card  { transition-delay: 0.05s; }
+.categories.revealed .luxurycar-card { transition-delay: 0.1s; }
+.categories.revealed .supercar-card  { transition-delay: 0.1s; }
+.categories.revealed .allcar-card    { transition-delay: 0.1s; }
+.categories.revealed .services-card  { transition-delay: 0.15s; }
+
+.about.revealed .about-heading     { transition-delay: 0.05s; }
+.about.revealed .about-description { transition-delay: 0.1s; }
+.about.revealed .about-rule        { transition-delay: 0.15s; }
+
+.contact.revealed .contact-text              { transition-delay: 0.1s; }
+.contact.revealed .contact-item:nth-child(1) { transition-delay: 0.15s; }
+.contact.revealed .contact-item:nth-child(2) { transition-delay: 0.2s; }
+.contact.revealed .contact-item:nth-child(3) { transition-delay: 0.25s; }
+
+@media (min-width: 1920px) {
+  .featured,
+  .contact {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  .cars-grid {
+    max-width: 1800px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .about-inner {
+    max-width: 1800px;
+    padding: 10rem 6rem;
+  }
+
+  .category-card {
+    padding: 5rem;
+  }
+}
+
+@media (min-width: 2560px) {
+  .featured,
+  .contact {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+
+  .cars-grid {
+    max-width: 2400px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .about-inner {
+    max-width: 2400px;
+    padding: 12rem 8rem;
+    gap: 8rem;
+  }
+
+  .hero-title-word {
+    font-size: clamp(9.5rem, 11vw, 12rem);
+  }
+
+  .hero-title-word.italic {
+    font-size: clamp(7.5rem, 8.5vw, 10rem);
+  }
+}
+
+@media (max-width: 1100px) {
+  .categories {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card:nth-child(3) {
+    grid-column: 1;
+  }
+
+  .cars-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-corner-tl, .hero-corner-br { display: none; }
+
+  .cars-grid {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+  }
+
+  .categories {
+    grid-template-columns: 1fr;
+  }
+
+  .category-card {
+    height: 55vh;
+    min-height: 450px;
+    padding: 3rem 2rem;
+  }
+
+  .category-card:nth-child(3) {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .about-inner {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding: 6rem 2rem;
+  }
+
+  .about-overlay-left {
+    background: linear-gradient(to bottom, rgba(8,8,8,0.9) 0%, rgba(8,8,8,0.7) 100%);
+  }
+
+  .featured, .contact {
+    padding: 6rem 2rem;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 900px) {
+  .contact-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contact-item:last-child {
+    grid-column: 1 / -1;
+    width: calc(50% - 0.75rem);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: var(--navbar-h);
+    padding-bottom: 6rem;
+  }
+
+  .hero-cta {
+    padding: 0.9rem 1.8rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    gap: 0.7rem;
+  }
+
+  .hero-title-word       { font-size: 3.8rem; }
+  .hero-title-word.italic { font-size: 3rem; }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-item:last-child {
+    grid-column: auto;
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .category-card {
+    padding: 2.5rem 1.5rem;
+    min-height: 400px;
+  }
+
+  .category-number  { font-size: 3.5rem; }
+  .category-title   { font-size: 2rem; }
+  .category-description { font-size: 1rem; }
+
+  .featured,
+  .contact {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-cta {
+    padding: 0.8rem 1.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    gap: 0.5rem;
+  }
+
+  .hero-title-word        { font-size: 3rem; }
+  .hero-title-word.italic { font-size: 2.5rem; }
+
+  .category-card { min-height: 350px; }
+
+  .cars-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .scroll-indicator {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 60px;
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-height: 780px) and (min-height: 651px) {
+  .scroll-indicator {
+    bottom: 1rem;
+  }
+
+  .scroll-line {
+    height: 36px;
+  }
+}
