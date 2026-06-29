@@ -14,7 +14,7 @@
 * **Database:** MySQL (InnoDB)
 * **Development Tools:** VS Code, DBeaver, Trello, Wireframe.cc
 
-## 📋 Prerequisites
+## 📋 Preparations
 Before running the application, ensure you have the following installed on your machine:
 * **PHP** (with Composer for Laravel dependencies)
 * **Node.js** (for Vue.js and frontend asset management)
