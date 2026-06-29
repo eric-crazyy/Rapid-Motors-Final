@@ -14,8 +14,8 @@
 * **Database:** MySQL (InnoDB)
 * **Development Tools:** VS Code, DBeaver, Trello, Wireframe.cc
 
-## 📋 Preparations
-Before running the application, ensure you have the following installed on your PC:
+## 📋 Prerequisites
+Before running the application, ensure you have the following installed on your machine:
 * **PHP** (with Composer for Laravel dependencies)
 * **Node.js** (for Vue.js and frontend asset management)
 * **Database Management System** (e.g., MySQL, MariaDB, or XAMPP)
@@ -36,6 +36,7 @@ DB_PASSWORD=pass
 To launch the project, execute the `start-dev.bat` file located in the root directory. This will open two command line windows—one for the frontend and one for the backend.
 * If the database has not been initialized, the backend command window will prompt you to create it.
 * Type `yes` and press Enter.
+* Once the services are running, the application will be accessible locally in your browser at **`http://127.0.0.1:8000`**.
 
 ## 📂 Project Structure
 ```text
@@ -48,4 +49,4 @@ To launch the project, execute the `start-dev.bat` file located in the root dire
 ## 🧪 Testing
 The project includes comprehensive functional testing via classes located in the Laravel `tests/Feature` directory, which verify authentication processes and CRUD operations.
 
-*Developed as a graduation project for the Software Developer and Tester program at Nagykanizsai SZC Zsigmondy Vilmos Technikum*
+*Developed as a graduation project for the Software Developer and Tester program at Nagykanizsai SZC Zsigmondy Vilmos Technikum (2026).*
