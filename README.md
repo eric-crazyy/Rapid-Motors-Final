@@ -39,8 +39,11 @@ I made setting up the environment as easy as possible. You don't need to manuall
 * **Server Orchestration:** Opens two dedicated terminals to start the Laravel backend and the Vite frontend simultaneously.
 
 **How to access the application:**
-Once the services are running, locate the **Laravel terminal window**, find the local server URL (typically `http://127.0.0.1:8000`), and **`Ctrl + Click`** on the link to open the website directly in your browser.
-
+* **Frontend:** Once the services are running, locate the **Laravel terminal window**, find the local server URL (typically `http://127.0.0.1:8000`), and **`Ctrl + Click`** on the link to open the website directly in your browser.
+* **Admin Dashboard:** To access the administration site, navigate to `/admin` in your browser and log in with the following credentials:
+  * **Email:** `admin@rapidmotors.com`
+  * **Password:** `Admin123!`
+    
 ## 📂 Project Structure
 ```text
 /app             # Laravel Controller, Model, and Middleware classes
@@ -51,5 +54,13 @@ Once the services are running, locate the **Laravel terminal window**, find the 
 
 ## 🧪 Testing
 The project includes comprehensive functional testing via classes located in the Laravel `tests/Feature` directory, which verify authentication processes and CRUD operations.
+
+## 🔮 Future Development Options
+The platform is built to be scalable. Future planned enhancements include:
+
+* **Admin 3D Model Upload:** Implement a file-handling system in the admin panel to allow direct upload and conversion of new vehicle 3D models.
+* **Advanced Search Filters:** Add multi-criteria filtering for engine type, year, price range, and performance specs.
+* **User Registration & Purchase:** Implement a secure user authentication system allowing visitors to register, create profiles, and purchase vehicles directly through the platform.
+* **User Favorites:** Allow registered users to save their favorite luxury vehicles to a personal collection.
 
 *Developed as a graduation project for the Software Developer and Tester program at Nagykanizsai SZC Zsigmondy Vilmos Technikum by Nagy Erik (2026)*
