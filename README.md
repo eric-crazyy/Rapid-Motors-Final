@@ -38,6 +38,9 @@ I made setting up the environment as easy as possible. You don't need to manuall
 * **Database Automation:** Checks your MySQL connection and automatically creates the `rapid_motors` database if it doesn't exist.
 * **Server Orchestration:** Opens two dedicated terminals to start the Laravel backend and the Vite frontend simultaneously.
 
+**How to access the application:**
+Once the services are running, locate the **Laravel terminal window**, find the local server URL (typically `http://127.0.0.1:8000`), and **`Ctrl + Click`** on the link to open the website directly in your browser.
+
 ## 📂 Project Structure
 ```text
 /app             # Laravel Controller, Model, and Middleware classes
