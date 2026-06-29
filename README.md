@@ -36,7 +36,7 @@ DB_PASSWORD=pass
 To launch the project, execute the `start-dev.bat` file located in the root directory. This will open two command line windows—one for the frontend and one for the backend.
 * If the database has not been initialized, the backend command window will prompt you to create it.
 * Type `yes` and press Enter.
-* Once the services are running, the application will be accessible locally in your browser at **`http://127.0.0.1:8000`**.
+* Once the services are running, go to the backend/Laravel terminal prompt and **`Ctrl + Click`** on the locally hosted URL output (typically **`http://127.0.0.1:8000`**) to open the website directly in your browser.
 
 ## 📂 Project Structure
 ```text
@@ -49,4 +49,4 @@ To launch the project, execute the `start-dev.bat` file located in the root dire
 ## 🧪 Testing
 The project includes comprehensive functional testing via classes located in the Laravel `tests/Feature` directory, which verify authentication processes and CRUD operations.
 
-*Developed as a graduation project for the Software Developer and Tester program at Nagykanizsai SZC Zsigmondy Vilmos Technikum (2026).*
+*Developed as a graduation project for the Software Developer and Tester program at Nagykanizsai SZC Zsigmondy Vilmos Technikum (2026)*
