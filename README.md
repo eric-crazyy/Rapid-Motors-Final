@@ -16,13 +16,14 @@
 * **Frontend:** Vue.js, Vue Router, Pinia, Axios
 * **Backend:** Laravel (PHP), RESTful API
 * **Database:** MySQL (InnoDB)
-* **Development Tools:** VS Code, DBeaver, Trello, Wireframe.cc
+* **Development Tools:** VS Code, DBeaver, Trello, Wireframe.cc, 7zip
 
 ## 📋 Prerequisites
 Before running the application, ensure you have the following installed on your machine:
-* **PHP** (with Composer for Laravel dependencies)
+* **Composer** (For Laravel dependencies)
 * **Node.js** (for Vue.js and frontend asset management)
 * **Database Management System** (e.g., MySQL, MariaDB, or XAMPP)
+* **7zip** (For handling the extraction of Laravel and vendor package archives during the automated dependency installation process)
 
 ## ⚡ Quick Start (Automated Setup)
 I made setting up the environment as easy as possible. You don't need to manually configure everything—the script handles the heavy lifting.
