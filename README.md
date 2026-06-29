@@ -20,23 +20,19 @@ Before running the application, ensure you have the following installed on your 
 * **Node.js** (for Vue.js and frontend asset management)
 * **Database Management System** (e.g., MySQL, MariaDB, or XAMPP)
 
-## ⚙️ Environment Configuration
-Configure your `.env` file with the following database credentials to ensure the application connects correctly to your local environment:
+## ⚡ Quick Start (Automated Setup)
+I made setting up the environment as easy as possible. You don't need to manually configure everything—the script handles the heavy lifting.
 
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3333
-DB_DATABASE=rapid_motors
-DB_USERNAME=root
-DB_PASSWORD=pass
-```
+1. **Launch the development environment:**
+   Simply run the `start-dev.bat` file in the root directory.
 
-## ⚡ Quick Start
-To launch the project, execute the `start-dev.bat` file located in the root directory. This will open two command line windows—one for the frontend and one for the backend.
-* If the database has not been initialized, the backend command window will prompt you to create it.
-* Type `yes` and press Enter.
-* Once the services are running, go to the backend/Laravel terminal prompt and **`Ctrl + Click`** on the locally hosted URL output (typically **`http://127.0.0.1:8000`**) to open the website directly in your browser.
+### What the `start-dev.bat` script does:
+* **System Check:** Automatically verifies if **PHP, Composer, and Node.js** are installed. If missing, it provides direct download links to help you get started.
+* **Environment Setup:** Creates and configures your `.env` file automatically, prompting you for database credentials (with sensible defaults).
+* **Dependency Management:** Automatically installs Laravel (`vendor`) and Frontend (`node_modules`) dependencies.
+* **Security & Optimization:** Runs `npm audit fix` for frontend security and generates the `APP_KEY` for Laravel.
+* **Database Automation:** Checks your MySQL connection and automatically creates the `rapid_motors` database if it doesn't exist.
+* **Server Orchestration:** Opens two dedicated terminals to start the Laravel backend and the Vite frontend simultaneously.
 
 ## 📂 Project Structure
 ```text
