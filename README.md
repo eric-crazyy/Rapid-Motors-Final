@@ -1,3 +1,5 @@
+<img width="6490" height="3286" alt="image" src="https://github.com/user-attachments/assets/70c942a4-dd9a-4424-bc23-573b320f9526" />
+
 # Rapid Motors
 
 **Rapid Motors** is a modern, streamlined full-stack web application developed for enthusiasts of luxury and classic cars. The platform allows users to browse vehicle listings efficiently, access detailed specifications, and view vehicles through interactive 3D models.
