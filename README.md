@@ -48,9 +48,4 @@ To launch the project, execute the `start-dev.bat` file located in the root dire
 ## 🧪 Testing
 The project includes comprehensive functional testing via classes located in the Laravel `tests/Feature` directory, which verify authentication processes and CRUD operations.
 
-## 👥 Developers
-* Erik Nagy
-* Milán Kővári
-* Balázs Mátyás Novák
-
-*Developed as a graduation project for the Software Developer and Tester program at Nagykanizsai SZC Zsigmondy Vilmos Technikum (2026).*
+*Developed as a graduation project for the Software Developer and Tester program at Nagykanizsai SZC Zsigmondy Vilmos Technikum*
