@@ -15,7 +15,7 @@
 * **Development Tools:** VS Code, DBeaver, Trello, Wireframe.cc
 
 ## 📋 Preparations
-Before running the application, ensure you have the following installed on your machine:
+Before running the application, ensure you have the following installed on your PC:
 * **PHP** (with Composer for Laravel dependencies)
 * **Node.js** (for Vue.js and frontend asset management)
 * **Database Management System** (e.g., MySQL, MariaDB, or XAMPP)
